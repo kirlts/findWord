@@ -49,15 +49,6 @@ export function useSemanticEngine() {
 
       setStatus('loading');
 
-      // @ts-ignore
-      if (window.__BYPASS_WORKER__) {
-          setTimeout(() => {
-              setStatus('ready');
-              resolve();
-          }, 100);
-          return;
-      }
-
       const id = crypto.randomUUID();
       callbacksRef.current[id] = resolve;
       workerRef.current?.postMessage({ id, type: 'load' });

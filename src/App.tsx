@@ -38,12 +38,6 @@ function App() {
     }
   }, [todayDateStr]);
 
-  useEffect(() => {
-    // @ts-ignore
-    if (window.__BYPASS_WORKER__) {
-        initEngine();
-    }
-  }, [initEngine]);
 
   useEffect(() => {
       saveGameState({
@@ -127,18 +121,21 @@ function App() {
 
   if (status === 'idle' || status === 'loading') {
       return (
-          <div className="flex-1 flex flex-col items-center justify-center text-white space-y-6 bg-[#0A0A0A] min-h-screen">
-              <h1 className="text-3xl font-light tracking-widest text-white/80">ORÁCULO SEMÁNTICO</h1>
+          <div className="flex-1 flex flex-col items-center justify-center text-white space-y-6 min-h-screen relative overflow-hidden">
+              <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] pointer-events-none" />
+              <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px] pointer-events-none" />
+
+              <h1 className="text-3xl font-light tracking-widest text-white/80 z-10">ORÁCULO SEMÁNTICO</h1>
 
               {status === 'idle' ? (
                   <button
                     onClick={initEngine}
-                    className="px-6 py-2 rounded-full glass hover:bg-white/10 transition-colors border border-white/20"
+                    className="px-6 py-2 rounded-full glass hover:bg-white/10 transition-colors border border-white/20 z-10"
                   >
                       Conectar Motor
                   </button>
               ) : (
-                  <div className="flex flex-col items-center gap-4">
+                  <div className="flex flex-col items-center gap-4 z-10">
                     <div className="w-8 h-8 border-2 border-t-white border-white/20 rounded-full animate-spin" />
                     {progress && progress.status !== 'done' && (
                         <span className="text-sm font-mono text-white/50">{progress.file} - {Math.round((progress.progress || 0))} %</span>
@@ -150,8 +147,14 @@ function App() {
   }
 
   return (
-    <div className="flex-1 flex flex-col p-4 md:p-8 max-w-2xl mx-auto w-full relative min-h-screen bg-[#0A0A0A] text-white">
-      <header className="flex justify-between items-center mb-8 mt-8">
+    <div className="flex-1 flex flex-col p-4 md:p-8 max-w-2xl mx-auto w-full relative min-h-screen text-white">
+      <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden bg-[#0A0A0A]">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px]" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px]" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-600/10 rounded-full blur-[150px]" />
+      </div>
+
+      <header className="flex justify-between items-center mb-8 mt-8 relative z-10">
           <h1 className="text-xl font-light tracking-widest text-white/80">ORÁCULO SEMÁNTICO</h1>
           <select
             value={difficulty}
