@@ -108,3 +108,55 @@ Este documento rige la ejecución estricta del proyecto. Contiene 100% de la esp
 - [x] Configurar **Encriptación de Logro:** Botón "Compartir", copia abstracción térmica de emojis libre de spoilers textuales. Ejemplo plantilla: `🌟 Oráculo Semántico #041 \n Encontré el centro en 12 Pings. \n 🕳️ 🧊 💧 🌿 🍃 ☀️ ⚡ 🧨 🔥 ☢️ 💎 \n --- Sigue la brújula.`
 - [x] **[Author.04] Privacidad criptográfica al compartir.** Pulsar el botón 'Compartir' tras un logro → Se copia un progreso puramente abstracto compuesto por emojis térmicos y número de intentos sin spoilers textuales.
 - [x] 🔄 Ejecutar workflow `/document` y `/test` para sincronización.
+
+## [EPIC-005] UX, Intuitividad y Quality of Life ("A Prueba de Tontos")
+(Refiere a Checklist QoL en MASTER-SPEC)
+
+### [TASK-011] Onboarding, Textos de Ayuda y Feedback Comprensible
+- [ ] **[Author.QoL.06]** Implementar textos de orientación para usuario nuevo.
+- [ ] **[Author.QoL.07]** Diferenciar visualmente cápsulas de diagnóstico (temperatura) vs guía (brújula).
+- [ ] **[Jugador Novato.01]** Onboarding auto-explicativo al primer contacto.
+- [ ] **[Jugador Novato.02]** Carga del motor con feedback comprensible ("Preparando el oráculo...").
+- [ ] **[Jugador Novato.03]** Leyenda explicativa en la cápsula termal.
+- [ ] **[Jugador Novato.04]** Contexto de acción en la brújula alquímica.
+- [ ] **[Jugador Novato.05]** Diferenciación visual diagnóstico vs guía.
+- [ ] **[Jugador Novato.07]** Descripción funcional de cada nivel de dificultad.
+- [ ] **[Jugador Novato.08]** Panel de victoria auto-explicativo.
+- [ ] **[Jugador Recurrente.01]** Acceso directo sin onboarding repetido.
+- [ ] **[Jugador Recurrente.02]** Contador visible de intentos en sesión.
+- [ ] 🔄 Ejecutar workflow `/document` y `/test` para sincronización.
+
+### [TASK-012] Mecánicas de Interacción: Hints, Práctica Libre y Estadísticas
+- [ ] **[Author.QoL.08]** Implementar mecanismo de pista (hint).
+- [ ] **[Author.QoL.09]** Implementar modo de práctica libre.
+- [ ] **[Jugador Novato.06]** Affordance visible para solicitar pista.
+- [ ] **[Jugador Recurrente.03]** Modo de práctica libre disponible.
+- [ ] **[Jugador Recurrente.04]** Historial y estadísticas de partidas.
+- [ ] 🔄 Ejecutar workflow `/document` y `/test` para sincronización.
+
+### [TASK-013] Correcciones Técnicas de Auditoría (Defectos de Conformidad)
+- [ ] **[Author.QoL.01]** Implementar stemming/lemmatización para dificultad Fácil.
+- [ ] **[Author.QoL.02]** Expandir vectores ancla de 15 a ≥100 para la brújula.
+- [ ] **[Author.QoL.03]** Añadir distorsiones cromáticas al glitch CSS (text-shadow RGB, clip-path, hue-rotate).
+- [ ] **[Author.QoL.04]** Eliminar bordes visibles del contenedor de input (Zero Input Frames).
+- [ ] **[Author.QoL.05]** Implementar HashRouter o validar compatibilidad de ruta estática.
+- [ ] **[Jugador Novato.09]** Distorsión glitch cromática y geométrica.
+- [ ] **[Jugador Novato.10]** Victoria por normalización morfológica en Fácil.
+- [ ] **[Jugador Novato.11]** Resolución de anclas universales en la brújula.
+- [ ] **[Jugador Novato.12]** Zero Input Frames en el campo de texto.
+- [ ] 🔄 Ejecutar workflow `/document` y `/test` para sincronización.
+
+### [TASK-014] Resiliencia, Persistencia y Compartir Robusto
+- [ ] **[Jugador Novato.13]** Persistencia de intentos entre recargas.
+- [ ] **[Jugador Novato.14]** Rechazo visible de input inválido (no silencio).
+- [ ] **[Jugador Novato.15]** Error handling visible ante fallo del motor.
+- [ ] **[Jugador Recurrente.05]** Identificador secuencial del reto (#NNN) en texto compartido.
+- [ ] **[Jugador Recurrente.06]** Fallback de Clipboard API.
+- [ ] **[Jugador Recurrente.07]** Aviso de transición de día.
+- [ ] **[Jugador Recurrente.08]** Consistencia UTC de la palabra diaria.
+- [ ] **[Jugador Recurrente.09]** Progresión cronológica correcta en texto compartido.
+- [ ] **[Jugador Recurrente.10]** Persistencia de dificultad entre días.
+- [ ] **[Jugador Recurrente.11]** Enrutamiento en modo Hash.
+- [ ] **[Jugador Recurrente.12]** Mensaje comprensible ante fallo de descarga del motor.
+- [ ] 🔄 Ejecutar workflow `/document` y `/test` para sincronización.
+

@@ -220,3 +220,139 @@ _(Checks diseñados exclusivamente para evaluar aspectos estéticos, físicos y 
 | Jugador | [Jugador.01] | [A.02], [A.03], [A.04], [Jugador.02], [Jugador.03], [Jugador.08] | [Jugador.04], [Jugador.05], [Jugador.09] | [Jugador.06] | [A.05], [Jugador.07] |
 | Motor Semántico | [Motor Semántico.01] | [A.01], [Motor Semántico.02], [Motor Semántico.09] | [Motor Semántico.03], [Motor Semántico.04], [Motor Semántico.05] | [Motor Semántico.08] | [Motor Semántico.06], [Motor Semántico.07] |
 | AI Vision CQA | N/A | [Vision.01], [Vision.02], [Vision.04], [Vision.05], [Vision.06] | [Vision.03], [Vision.08] | [Vision.10] | [Vision.07], [Vision.09] |
+
+---
+
+# Verification Checklist — UX, Intuitividad y Quality of Life
+
+## Identidad del Sistema (QoL)
+
+El sistema guía a jugadores casuales hacia el descubrimiento de un concepto secreto diario mediante retroalimentación visual intuitiva y auto-explicativa sobre la proximidad semántica de sus intentos.
+
+## Actores (QoL)
+
+* **Jugador Novato** (Consumer)
+* **Jugador Recurrente** (Consumer)
+
+## Checks de Autor (QoL)
+
+* **[Author.QoL.01] La dificultad Fácil no implementa normalización morfológica.**
+  Jugar en Fácil e insertar una variante morfológica de la palabra objetivo (plural, género cambiado) → El sistema acepta la respuesta como victoria, demostrando normalización lingüística más allá del umbral numérico bruto.
+
+* **[Author.QoL.02] La brújula alquímica opera con pool insuficiente de anclas.**
+  Insertar una palabra y observar el ingrediente faltante → El ingrediente proviene de un pool de al menos 100 conceptos ancla distintos, no de un set reducido de 15.
+
+* **[Author.QoL.03] La animación glitch carece de distorsiones cromáticas.**
+  Insertar una palabra con >95% similitud → La cápsula muestra alteraciones cromáticas (desplazamiento RGB, distorsión de color, clip-path fracturado) además de movimiento posicional.
+
+* **[Author.QoL.04] El contenedor de input muestra bordes visibles.**
+  Enfocar el campo de texto del juego → El input no muestra ningún borde, outline, ni frame visible del navegador ni del contenedor.
+
+* **[Author.QoL.05] El enrutamiento no usa modo Hash.**
+  Inspeccionar la URL del juego desplegado en hosting estático → La URL usa modo hash (/#/) para compatibilidad con despliegue estático.
+
+* **[Author.QoL.06] La UI no incluye textos de orientación para el usuario.**
+  Abrir el juego por primera vez sin instrucciones previas → Un componente visible explica la mecánica básica del juego, qué significan las cápsulas, y cómo jugar.
+
+* **[Author.QoL.07] El feedback visual no diferencia diagnóstico de guía.**
+  Insertar una palabra y observar las cápsulas de feedback simultáneamente → La cápsula termal ("cuán cerca estás") y la brújula ("hacia dónde ir") son visualmente distinguibles por código de color, iconografía, o separación clara.
+
+* **[Author.QoL.08] No existe mecanismo de pista (hint).**
+  Buscar un mecanismo de ayuda en la interfaz → Existe un botón o affordance visible para solicitar una pista cuando el jugador está atascado.
+
+* **[Author.QoL.09] No existe modo de práctica libre.**
+  Buscar un modo de práctica en la interfaz → Existe un mecanismo para jugar con palabras aleatorias fuera del reto diario.
+
+## Checklist Derivado (QoL)
+
+### Jugador Novato
+
+* **[Jugador Novato.01] Onboarding auto-explicativo al primer contacto.**
+  Abrir el juego por primera vez sin instrucciones previas → Un componente visible explica la mecánica básica del juego (qué hacer, cómo funciona el feedback).
+
+* **[Jugador Novato.02] Carga del motor con feedback comprensible.**
+  Observar la pantalla de carga del motor → Un mensaje en lenguaje natural describe qué ocurre ("Preparando el oráculo...") sin rutas de archivos ni datos técnicos.
+
+* **[Jugador Novato.03] Leyenda explicativa en la cápsula termal.**
+  Insertar una palabra y observar la cápsula termal generada → La cápsula incluye o está acompañada de leyenda/tooltip indicando que mide la proximidad al objetivo.
+
+* **[Jugador Novato.04] Contexto de acción en la brújula alquímica.**
+  Insertar una palabra y observar la brújula alquímica → El texto de la brújula incluye contexto de acción ("piensa en palabras con este ingrediente para acercarte").
+
+* **[Jugador Novato.05] Diferenciación visual diagnóstico vs guía.**
+  Insertar una palabra y observar ambas cápsulas → Temperatura y brújula son visualmente distinguibles por códigos de color, iconografía o separación espacial.
+
+* **[Jugador Novato.06] Affordance visible para solicitar pista.**
+  Buscar un mecanismo de "pista" en la interfaz → Existe un botón o affordance visible para solicitar ayuda.
+
+* **[Jugador Novato.07] Descripción funcional de cada nivel de dificultad.**
+  Abrir el selector de dificultad → Cada opción incluye una descripción corta que explica qué cambia (ej. "acepta sinónimos cercanos").
+
+* **[Jugador Novato.08] Panel de victoria auto-explicativo.**
+  Ganar el juego y observar el panel de victoria → El texto de victoria es comprensible sin jerga y el botón de compartir indica qué se copiará al portapapeles.
+
+* **[Jugador Novato.09] Distorsión glitch cromática y geométrica.**
+  Insertar una palabra con >95% similitud → La cápsula muestra alteraciones cromáticas además de movimiento posicional.
+
+* **[Jugador Novato.10] Victoria por normalización morfológica en Fácil.**
+  Jugar en Fácil e insertar un plural de la palabra objetivo → El sistema acepta la respuesta como victoria (100%).
+
+* **[Jugador Novato.11] Resolución de anclas universales en la brújula.**
+  Insertar una palabra y observar el ingrediente de la brújula → El ingrediente proviene de un pool de al menos 100 conceptos ancla distintos.
+
+* **[Jugador Novato.12] Zero Input Frames en el campo de texto.**
+  Enfocar el input de texto → El input no muestra borde, outline, ni frame visible.
+
+* **[Jugador Novato.13] Persistencia de intentos entre recargas.**
+  Insertar 3 palabras, recargar la página → Los 3 intentos previos aparecen con sus emojis y porcentajes intactos.
+
+* **[Jugador Novato.14] Rechazo visible de input inválido.**
+  Teclear solo emojis o caracteres especiales → El sistema muestra feedback visual indicando input no válido, no silencio.
+
+* **[Jugador Novato.15] Error handling visible ante fallo del motor.**
+  Simular fallo o timeout del motor semántico → El sistema muestra mensaje de error comprensible, no un estado congelado.
+
+### Jugador Recurrente
+
+* **[Jugador Recurrente.01] Acceso directo sin onboarding repetido.**
+  Abrir el juego como usuario recurrente (con tutorial ya visto) → No aparece tutorial/onboarding repetido; acceso directo al juego.
+
+* **[Jugador Recurrente.02] Contador visible de intentos en sesión.**
+  Observar la interfaz durante una sesión activa → Un contador visible indica el número de intentos realizados.
+
+* **[Jugador Recurrente.03] Modo de práctica libre disponible.**
+  Buscar un modo de práctica libre en la interfaz → Existe un mecanismo para jugar con palabras aleatorias fuera del reto diario.
+
+* **[Jugador Recurrente.04] Historial y estadísticas de partidas.**
+  Buscar estadísticas o historial de partidas anteriores → Existe una vista que muestra racha, partidas jugadas, distribución de intentos.
+
+* **[Jugador Recurrente.05] Identificador secuencial del reto en texto compartido.**
+  Ganar y pulsar Compartir; inspeccionar el texto copiado → El texto contiene un número de reto secuencial (#NNN).
+
+* **[Jugador Recurrente.06] Fallback de Clipboard API.**
+  Pulsar Compartir en un navegador sin Clipboard API (HTTP) → El sistema muestra el texto en un modal copiable o da feedback alternativo.
+
+* **[Jugador Recurrente.07] Aviso de transición de día.**
+  Jugar a las 23:59, recargar a las 00:01 (cambio de día UTC) → El sistema notifica al jugador que el reto cambió antes de borrar su progreso.
+
+* **[Jugador Recurrente.08] Consistencia UTC de la palabra diaria.**
+  Comparar la palabra diaria entre dos dispositivos en distinta timezone en la misma fecha UTC → Ambos dispositivos muestran la misma palabra.
+
+* **[Jugador Recurrente.09] Progresión cronológica correcta en texto compartido.**
+  Ganar, compartir, inspeccionar la progresión de emojis → Los emojis reflejan la cronología correcta (del intento más antiguo al más reciente).
+
+* **[Jugador Recurrente.10] Persistencia de dificultad entre días.**
+  Cambiar dificultad a Difícil, esperar cambio de día, reabrir → La dificultad sigue en Difícil.
+
+* **[Jugador Recurrente.11] Enrutamiento en modo Hash.**
+  Inspeccionar la URL del juego desplegado → La URL usa modo hash (/#/) para compatibilidad con hosting estático.
+
+* **[Jugador Recurrente.12] Mensaje comprensible ante fallo de descarga del motor.**
+  Abrir el juego sin conexión y sin modelo descargado previamente → El sistema muestra un mensaje de error comprensible sobre la imposibilidad de descargar el motor.
+
+## Matriz de Cobertura (QoL)
+
+| Actor | Disponibilidad | Funcionalidad | Corrección | Integridad | Resiliencia |
+|---|---|---|---|---|---|
+| Jugador Novato | [Author.QoL.06], [Jugador Novato.01], [Jugador Novato.02] | [Author.QoL.07], [Author.QoL.08], [Jugador Novato.03], [Jugador Novato.04], [Jugador Novato.05], [Jugador Novato.06], [Jugador Novato.07], [Jugador Novato.08] | [Author.QoL.01], [Author.QoL.02], [Author.QoL.03], [Jugador Novato.09], [Jugador Novato.10], [Jugador Novato.11] | [Author.QoL.04], [Jugador Novato.12], [Jugador Novato.13] | [Jugador Novato.14], [Jugador Novato.15] |
+| Jugador Recurrente | [Jugador Recurrente.01], [Jugador Recurrente.02] | [Author.QoL.09], [Jugador Recurrente.03], [Jugador Recurrente.04], [Jugador Recurrente.05], [Jugador Recurrente.06], [Jugador Recurrente.07] | [Jugador Recurrente.08], [Jugador Recurrente.09] | [Author.QoL.05], [Jugador Recurrente.10], [Jugador Recurrente.11] | [Jugador Recurrente.12] |
