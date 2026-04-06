@@ -1,0 +1,15 @@
+
+> temp-app@0.0.0 dev
+> vite
+
+
+  VITE v8.0.4  ready in 326 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+7:26:10 PM [vite] (client) ✨ new dependencies optimized: @xenova/transformers
+7:26:10 PM [vite] (client) ✨ optimized dependencies changed. reloading
+7:30:50 PM [vite] (client) hmr update /src/index.css, /src/components/TutorialModal.tsx
+7:31:01 PM [vite] (client) hmr update /src/App.tsx, /src/index.css
+7:35:54 PM [vite] (client) hmr update /src/App.tsx, /src/index.css
+7:39:04 PM [vite] (client) hmr update /src/App.tsx, /src/index.css

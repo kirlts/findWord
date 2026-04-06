@@ -10,9 +10,19 @@ export interface GameState {
     attempts: Attempt[];
     hasWon: boolean;
     difficulty: 'Fácil' | 'Medio' | 'Difícil';
+    dayIndex?: number;
+}
+
+export interface PlayerStats {
+    gamesPlayed: number;
+    winStreak: number;
+    maxStreak: number;
+    distribution: Record<string, number>;
+    hasSeenTutorial: boolean;
 }
 
 const STORAGE_KEY = 'oraculo_semantico_state';
+const STATS_KEY = 'oraculo_semantico_stats';
 
 export const loadGameState = (): GameState | null => {
     try {
@@ -34,11 +44,44 @@ export const saveGameState = (state: GameState) => {
     }
 };
 
+export const loadPlayerStats = (): PlayerStats => {
+    const defaultStats: PlayerStats = {
+        gamesPlayed: 0,
+        winStreak: 0,
+        maxStreak: 0,
+        distribution: {
+            1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, '7+': 0
+        },
+        hasSeenTutorial: false
+    };
+
+    try {
+        const item = localStorage.getItem(STATS_KEY);
+        if (item) {
+            return { ...defaultStats, ...JSON.parse(item) };
+        }
+    } catch (error) {
+        console.error("Error loading player stats", error);
+    }
+    return defaultStats;
+};
+
+export const savePlayerStats = (stats: PlayerStats) => {
+    try {
+        localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+    } catch (error) {
+        console.error("Error saving player stats", error);
+    }
+};
+
 export const generateShareText = (state: GameState): string => {
     const attemptsCount = state.attempts.length;
 
-    const recentEmojis = state.attempts
-        .slice(-10)
+    // We slice the most recent 10, but we need to reverse them back
+    // so chronological order is maintained (oldest to newest)
+    const recentAttempts = [...state.attempts].slice(0, 10).reverse();
+
+    const recentEmojis = recentAttempts
         .map(a => {
             const p = a.percentage;
             if (p < 10) return '🕳️';
@@ -54,7 +97,7 @@ export const generateShareText = (state: GameState): string => {
             return '💎';
         }).join(' ');
 
-    const dateStr = state.date;
+    const challengeId = state.dayIndex ? `#${state.dayIndex}` : state.date;
 
-    return `🌟 Oráculo Semántico ${dateStr}\nEncontré el centro en ${attemptsCount} Pings.\n${recentEmojis}\n--- Sigue la brújula.`;
+    return `🌟 Oráculo Semántico ${challengeId}\nEncontré el centro en ${attemptsCount} Pings.\n${recentEmojis}\n--- Sigue la brújula.`;
 };
